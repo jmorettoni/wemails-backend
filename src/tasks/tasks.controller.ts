@@ -6,12 +6,8 @@ import {  AuthGuard } from '@nestjs/passport';
 
 @Controller('tasks')
 export class TasksController {
-
-
-    
-     constructor( 
-        private taskService:TaskService
-        ){ 
+ 
+     constructor(   private taskService:TaskService  ){ 
      }
 
 
@@ -24,21 +20,18 @@ export class TasksController {
      
 
      @UseGuards(AuthGuard('jwt'))
+     @Post()
+     async create(@Body() task : Task) :  Promise<Task>{
+          return this.taskService.create(task);
+     }
+     
+     @UseGuards(AuthGuard('jwt'))
      @Get(':id')
      async getById( @Param('id') id:string ) : Promise<Task>{
                  return this.taskService.getById(id);
      }
      
-
-
-     @UseGuards(AuthGuard('jwt'))
-     @Post()
-     async create(@Body() task : Task) :  Promise<Task>{
-          return this.taskService.create(task);
-     }
-
-
-
+ 
      @UseGuards(AuthGuard('jwt'))
      @Put(':id')
      async update(@Param('id') id:string , @Body() task : Task) :  Promise<Task>{
@@ -55,5 +48,5 @@ export class TasksController {
      }
 
 
-
+ 
 }

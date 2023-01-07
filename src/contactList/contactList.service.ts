@@ -19,12 +19,9 @@ import {
   @Injectable()
   export class ContactListService {
   
-    constructor(@InjectModel(ContactList.name) private contactListModel: Model < ContactListDocument > ) {}
+       constructor(@InjectModel(ContactList.name) private contactListModel: Model < ContactListDocument > ) {}
   
-
-
-
-  
+ 
        //////////////
         async getAll(){
               return await this.contactListModel.find().sort( { _id: -1 } ).exec();
@@ -32,15 +29,24 @@ import {
        ///////////////
 
   
-       ///////////
-        async getContactListById( listUserId: string) {
-                return this.contactListModel.find({
-                  listUserId
+       ///////////-
+        async getContactListById( _id: string) {
+                return this.contactListModel.findOne({
+                  _id
                 }).exec();
         }
         ///////////
-         
 
+
+           ///////////-
+           async getContactListByUserId( listUserId: string) {
+            return this.contactListModel.findOne({
+              listUserId
+            }).exec();
+          }
+          ///////////
+         
+        
 
         ///////////
         async getContactListByUser(listUserId: string) {

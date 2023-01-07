@@ -7,9 +7,12 @@ export declare class ContactListService {
     getAll(): Promise<(ContactList & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     })[]>;
-    getContactListById(listUserId: string): Promise<(ContactList & import("mongoose").Document<any, any, any> & {
+    getContactListById(_id: string): Promise<ContactList & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    })[]>;
+    }>;
+    getContactListByUserId(listUserId: string): Promise<ContactList & import("mongoose").Document<any, any, any> & {
+        _id: import("mongoose").Types.ObjectId;
+    }>;
     getContactListByUser(listUserId: string): Promise<ContactList & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }>;

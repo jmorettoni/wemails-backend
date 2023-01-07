@@ -24,11 +24,11 @@ let TasksController = class TasksController {
     async getAll() {
         return this.taskService.getAll();
     }
-    async getById(id) {
-        return this.taskService.getById(id);
-    }
     async create(task) {
         return this.taskService.create(task);
+    }
+    async getById(id) {
+        return this.taskService.getById(id);
     }
     async update(id, task) {
         task.id = id;
@@ -47,20 +47,20 @@ __decorate([
 ], TasksController.prototype, "getAll", null);
 __decorate([
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
-    (0, common_1.Get)(':id'),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], TasksController.prototype, "getById", null);
-__decorate([
-    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [task_1.Task]),
     __metadata("design:returntype", Promise)
 ], TasksController.prototype, "create", null);
+__decorate([
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
+    (0, common_1.Get)(':id'),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], TasksController.prototype, "getById", null);
 __decorate([
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
     (0, common_1.Put)(':id'),

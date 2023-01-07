@@ -14,40 +14,41 @@ import {
   
   @Controller('contactList')
   export class ContactListController {
-    constructor(private readonly contactListService: ContactListService) {}
-  
+    
+      
+        constructor(private readonly contactListService: ContactListService) {
+
+        }
+
+        @UseGuards(AuthGuard('jwt'))
+        @Get('')
+        getAll(@Param() param) {
+          return this.contactListService.getAll();
+        }
+
+        @UseGuards(AuthGuard('jwt'))
+        @Post()
+        createList(@Body() createContactListDto: CreateContactListDto) {
+          return this.contactListService.createContactList(createContactListDto);
+        }
+    
 
 
-
-    @UseGuards(AuthGuard('jwt'))
-    @Get('')
-    getAll(@Param() param) {
-      return this.contactListService.getAll();
-    }
-
+        @UseGuards(AuthGuard('jwt'))
+        @Get(':_id')
+        getListById(@Param() param) {
+          return this.contactListService.getContactListById(param._id); 
+        } 
 
 
-    @UseGuards(AuthGuard('jwt'))
-    @Get(':_id')
-    getListById(@Param() param) {
-      return this.contactListService.getContactListById(param._id);
-    }
+        @UseGuards(AuthGuard('jwt'))
+        @Get(':listUserId')
+        getListByUserId(@Param() param) {
+          return this.contactListService.getContactListByUserId(param.listUserId); 
+        } 
 
-
-/*
-    @UseGuards(AuthGuard('jwt'))
-    @Get('_idUser')
-    getListByUser(@Param() param) {
-      return this.contactListService.getContactListByUser(param._idUser);
-    }
-*/
-
-
-    @Post()
-    createList(@Body() createContactListDto: CreateContactListDto) {
-      return this.contactListService.createContactList(createContactListDto);
-    }
-
+        
+       
 
     
   } 

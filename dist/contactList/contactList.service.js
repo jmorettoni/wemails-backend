@@ -24,8 +24,13 @@ let ContactListService = class ContactListService {
     async getAll() {
         return await this.contactListModel.find().sort({ _id: -1 }).exec();
     }
-    async getContactListById(listUserId) {
-        return this.contactListModel.find({
+    async getContactListById(_id) {
+        return this.contactListModel.findOne({
+            _id
+        }).exec();
+    }
+    async getContactListByUserId(listUserId) {
+        return this.contactListModel.findOne({
             listUserId
         }).exec();
     }

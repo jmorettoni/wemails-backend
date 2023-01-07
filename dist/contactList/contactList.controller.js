@@ -24,11 +24,14 @@ let ContactListController = class ContactListController {
     getAll(param) {
         return this.contactListService.getAll();
     }
+    createList(createContactListDto) {
+        return this.contactListService.createContactList(createContactListDto);
+    }
     getListById(param) {
         return this.contactListService.getContactListById(param._id);
     }
-    createList(createContactListDto) {
-        return this.contactListService.createContactList(createContactListDto);
+    getListByUserId(param) {
+        return this.contactListService.getContactListByUserId(param.listUserId);
     }
 };
 __decorate([
@@ -41,6 +44,14 @@ __decorate([
 ], ContactListController.prototype, "getAll", null);
 __decorate([
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [create_contactList_dto_1.CreateContactListDto]),
+    __metadata("design:returntype", void 0)
+], ContactListController.prototype, "createList", null);
+__decorate([
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
     (0, common_1.Get)(':_id'),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
@@ -48,12 +59,13 @@ __decorate([
     __metadata("design:returntype", void 0)
 ], ContactListController.prototype, "getListById", null);
 __decorate([
-    (0, common_1.Post)(),
-    __param(0, (0, common_1.Body)()),
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
+    (0, common_1.Get)(':listUserId'),
+    __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [create_contactList_dto_1.CreateContactListDto]),
+    __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], ContactListController.prototype, "createList", null);
+], ContactListController.prototype, "getListByUserId", null);
 ContactListController = __decorate([
     (0, common_1.Controller)('contactList'),
     __metadata("design:paramtypes", [contactList_service_1.ContactListService])
