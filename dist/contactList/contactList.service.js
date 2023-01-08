@@ -30,7 +30,7 @@ let ContactListService = class ContactListService {
         }).exec();
     }
     async getContactListByUserId(listUserId) {
-        return this.contactListModel.findOne({
+        return this.contactListModel.find({
             listUserId
         }).exec();
     }

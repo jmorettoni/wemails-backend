@@ -52,7 +52,7 @@ __decorate([
 ], ContactListController.prototype, "createList", null);
 __decorate([
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
-    (0, common_1.Get)(':_id'),
+    (0, common_1.Get)('_id'),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
@@ -60,7 +60,7 @@ __decorate([
 ], ContactListController.prototype, "getListById", null);
 __decorate([
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
-    (0, common_1.Get)(':listUserId'),
+    (0, common_1.Get)('/listUserId/:listUserId'),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),

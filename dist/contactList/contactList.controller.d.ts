@@ -12,7 +12,7 @@ export declare class ContactListController {
     getListById(param: any): Promise<import("./contactList.schema").ContactList & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }>;
-    getListByUserId(param: any): Promise<import("./contactList.schema").ContactList & import("mongoose").Document<any, any, any> & {
+    getListByUserId(param: any): Promise<(import("./contactList.schema").ContactList & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    }>;
+    })[]>;
 }

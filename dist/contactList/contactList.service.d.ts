@@ -10,9 +10,9 @@ export declare class ContactListService {
     getContactListById(_id: string): Promise<ContactList & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }>;
-    getContactListByUserId(listUserId: string): Promise<ContactList & import("mongoose").Document<any, any, any> & {
+    getContactListByUserId(listUserId: string): Promise<(ContactList & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
-    }>;
+    })[]>;
     getContactListByUser(listUserId: string): Promise<ContactList & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }>;

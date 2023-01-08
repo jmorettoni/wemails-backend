@@ -40,7 +40,7 @@ import {
 
            ///////////-
            async getContactListByUserId( listUserId: string) {
-            return this.contactListModel.findOne({
+            return this.contactListModel.find({
               listUserId
             }).exec();
           }

@@ -20,11 +20,16 @@ import {
 
         }
 
+
+        /*  */
         @UseGuards(AuthGuard('jwt'))
         @Get('')
         getAll(@Param() param) {
           return this.contactListService.getAll();
         }
+      
+
+
 
         @UseGuards(AuthGuard('jwt'))
         @Post()
@@ -35,14 +40,15 @@ import {
 
 
         @UseGuards(AuthGuard('jwt'))
-        @Get(':_id')
+        @Get('_id')
         getListById(@Param() param) {
           return this.contactListService.getContactListById(param._id); 
         } 
 
 
         @UseGuards(AuthGuard('jwt'))
-        @Get(':listUserId')
+        //@Get('listUserId')
+        @Get('/listUserId/:listUserId')
         getListByUserId(@Param() param) {
           return this.contactListService.getContactListByUserId(param.listUserId); 
         } 
