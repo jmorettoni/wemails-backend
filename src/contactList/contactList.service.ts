@@ -42,7 +42,7 @@ import {
            async getContactListByUserId( listUserId: string) {
             return this.contactListModel.find({
               listUserId
-            }).exec();
+            }).sort( { _id: -1 } ).exec();
           }
           ///////////
          
