@@ -17,9 +17,11 @@ const common_1 = require("@nestjs/common");
 const mongoose_1 = require("@nestjs/mongoose");
 const mongoose_2 = require("mongoose");
 const contactList_schema_1 = require("./contactList.schema");
+const task_service_1 = require("../tasks/shared/task.service/task.service");
 let ContactListService = class ContactListService {
-    constructor(contactListModel) {
+    constructor(contactListModel, taskService) {
         this.contactListModel = contactListModel;
+        this.taskService = taskService;
     }
     async getAll() {
         return await this.contactListModel.find().sort({ _id: -1 }).exec();
@@ -47,11 +49,37 @@ let ContactListService = class ContactListService {
         }
         return createContactList.save();
     }
+    async updateListByUserId(userid, list) {
+        let listId = list._id;
+        console.log('list TO SAVE USERID', userid);
+        delete list._id;
+        const createDate = Date.now();
+        list.lastUpdate = createDate;
+        console.log('list TO SAVE', list);
+        return await this.contactListModel.updateOne({ _id: listId, listUserId: userid }, list).exec();
+    }
+    async removeListByUserId(userId, listArray) {
+        console.log("removeListByUserId", userId);
+        console.log("removeListByUserId", listArray);
+        return await this.contactListModel.deleteMany({ listUserId: userId, _id: { $in: listArray } }).exec().then(res => {
+            let task = {
+                "description": "DELETE-CONTACT-LIST",
+                "object": listArray,
+                "completed": false
+            };
+            this.taskService.create(task).then(res => {
+                console.log("CREATE TASK");
+            });
+            return { return: res };
+        }).catch(error => {
+            return { error: error };
+        });
+    }
 };
 ContactListService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(contactList_schema_1.ContactList.name)),
-    __metadata("design:paramtypes", [mongoose_2.Model])
+    __metadata("design:paramtypes", [mongoose_2.Model, task_service_1.TaskService])
 ], ContactListService);
 exports.ContactListService = ContactListService;
 //# sourceMappingURL=contactList.service.js.map

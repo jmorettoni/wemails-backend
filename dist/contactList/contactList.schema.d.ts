@@ -32,7 +32,7 @@ export declare class ContactList {
     totalSubscribers: number;
     totalSubscribersConfirmed: number;
     pctSubscribersConfirmed: number;
-    createDate: string;
-    lastUpdate: string;
+    createDate: number;
+    lastUpdate: number;
 }
 export declare const ContactListSchema: import("mongoose").Schema<ContactList, import("mongoose").Model<ContactList, any, any, any, any>, {}, {}, {}, {}, import("mongoose").DefaultSchemaOptions, ContactList>;

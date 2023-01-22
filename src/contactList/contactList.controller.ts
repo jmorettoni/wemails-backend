@@ -4,7 +4,8 @@ import {
     Post,
     Body,
     Param,
-    UseGuards
+    UseGuards,
+    Delete
   } from '@nestjs/common';
 
 
@@ -53,7 +54,22 @@ import {
           return this.contactListService.getContactListByUserId(param.listUserId); 
         } 
 
-        
+
+
+        @UseGuards(AuthGuard('jwt')) 
+        @Post('/userIdRemove/:userIdRemove')
+        removeList( @Param() param , @Body() lists    ) {
+          return this.contactListService.removeListByUserId( param.userIdRemove  ,  lists.lists ); 
+        } 
+
+
+        @UseGuards(AuthGuard('jwt')) 
+        @Post('/userIdEdit/:userIdEdit')
+        updateList( @Param() param , @Body() list    ) {
+          return this.contactListService.updateListByUserId( param.userIdEdit  ,  list  ); 
+        } 
+
+         
        
 
     

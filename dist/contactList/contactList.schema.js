@@ -59,13 +59,13 @@ __decorate([
     (0, mongoose_1.Prop)({
         required: false
     }),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], ContactList.prototype, "createDate", void 0);
 __decorate([
     (0, mongoose_1.Prop)({
         required: false
     }),
-    __metadata("design:type", String)
+    __metadata("design:type", Number)
 ], ContactList.prototype, "lastUpdate", void 0);
 ContactList = __decorate([
     (0, mongoose_1.Schema)()

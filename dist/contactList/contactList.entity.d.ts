@@ -6,6 +6,6 @@ export declare class ContactList {
     totalSubscribers: number;
     totalSubscribersConfirmed: number;
     pctSubscribersConfirmed: number;
-    createDate: string;
-    lastUpdate: string;
+    createDate: number;
+    lastUpdate: number;
 }
