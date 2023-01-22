@@ -15,4 +15,10 @@ export declare class ContactListController {
     getListByUserId(param: any): Promise<(import("./contactList.schema").ContactList & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     })[]>;
+    removeList(param: any, lists: any): Promise<{
+        return: import("mongodb").DeleteResult;
+    } | {
+        error: any;
+    }>;
+    updateList(param: any, list: any): Promise<import("mongodb").UpdateResult>;
 }

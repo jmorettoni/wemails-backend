@@ -32,18 +32,22 @@ import {
   import {
     JwtStrategy
   } from 'src/strategy/jwt.strategy';
-  /*
-  import {
-    LocalStrategy
-  } from 'src/strategy/local.strategy';
-  */
   
+
+
+import { TaskService } from 'src/tasks/shared/task.service/task.service';
+
+
+import { TaskSchema } from 'src/tasks/schemas/task.schema';
+
+ 
   @Module({
     imports: [
-     MongooseModule.forFeature([{
-        name: ContactList.name,
-        schema: ContactListSchema
-      }]),
+      MongooseModule.forFeature([{name:"Task" ,schema : TaskSchema }]),
+      MongooseModule.forFeature([{
+          name: ContactList.name,
+          schema: ContactListSchema
+       }]),
      JwtModule.register({
         secret: jwtConstants.secret,
         signOptions: {
@@ -52,6 +56,6 @@ import {
       }),
     ],
     controllers: [ContactListController],
-    providers: [ContactListService, JwtStrategy],
+    providers: [ContactListService, JwtStrategy , TaskService ], 
   })
   export class ContactListModule {} 

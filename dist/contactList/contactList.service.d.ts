@@ -1,9 +1,11 @@
 import { CreateContactListDto } from './create-contactList.dto';
 import { Model } from 'mongoose';
 import { ContactList, ContactListDocument } from './contactList.schema';
+import { TaskService } from '../tasks/shared/task.service/task.service';
 export declare class ContactListService {
     private contactListModel;
-    constructor(contactListModel: Model<ContactListDocument>);
+    private taskService;
+    constructor(contactListModel: Model<ContactListDocument>, taskService: TaskService);
     getAll(): Promise<(ContactList & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     })[]>;
@@ -18,5 +20,11 @@ export declare class ContactListService {
     }>;
     createContactList(createListaDto: CreateContactListDto): Promise<ContactList & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
+    }>;
+    updateListByUserId(userid: String, list: any): Promise<import("mongodb").UpdateResult>;
+    removeListByUserId(userId: any, listArray: any): Promise<{
+        return: import("mongodb").DeleteResult;
+    } | {
+        error: any;
     }>;
 }

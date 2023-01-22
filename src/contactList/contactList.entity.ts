@@ -9,7 +9,7 @@ export class ContactList {
     totalSubscribersConfirmed : number;
     pctSubscribersConfirmed : number; 
     
-    createDate : string;   
-    lastUpdate  : string;  
+    createDate : number;   
+    lastUpdate  : number;  
 
 }

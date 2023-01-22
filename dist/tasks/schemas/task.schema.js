@@ -4,6 +4,7 @@ exports.TaskSchema = void 0;
 const mongoose = require("mongoose");
 exports.TaskSchema = new mongoose.Schema({
     description: String,
+    object: Object,
     completed: Boolean
 });
 //# sourceMappingURL=task.schema.js.map

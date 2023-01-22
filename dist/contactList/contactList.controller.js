@@ -33,6 +33,12 @@ let ContactListController = class ContactListController {
     getListByUserId(param) {
         return this.contactListService.getContactListByUserId(param.listUserId);
     }
+    removeList(param, lists) {
+        return this.contactListService.removeListByUserId(param.userIdRemove, lists.lists);
+    }
+    updateList(param, list) {
+        return this.contactListService.updateListByUserId(param.userIdEdit, list);
+    }
 };
 __decorate([
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
@@ -66,6 +72,24 @@ __decorate([
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
 ], ContactListController.prototype, "getListByUserId", null);
+__decorate([
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
+    (0, common_1.Post)('/userIdRemove/:userIdRemove'),
+    __param(0, (0, common_1.Param)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], ContactListController.prototype, "removeList", null);
+__decorate([
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
+    (0, common_1.Post)('/userIdEdit/:userIdEdit'),
+    __param(0, (0, common_1.Param)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], ContactListController.prototype, "updateList", null);
 ContactListController = __decorate([
     (0, common_1.Controller)('contactList'),
     __metadata("design:paramtypes", [contactList_service_1.ContactListService])

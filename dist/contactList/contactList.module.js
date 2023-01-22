@@ -15,11 +15,14 @@ const contactList_schema_1 = require("./contactList.schema");
 const jwt_1 = require("@nestjs/jwt");
 const constants_1 = require("../strategy/constants");
 const jwt_strategy_1 = require("../strategy/jwt.strategy");
+const task_service_1 = require("../tasks/shared/task.service/task.service");
+const task_schema_1 = require("../tasks/schemas/task.schema");
 let ContactListModule = class ContactListModule {
 };
 ContactListModule = __decorate([
     (0, common_1.Module)({
         imports: [
+            mongoose_1.MongooseModule.forFeature([{ name: "Task", schema: task_schema_1.TaskSchema }]),
             mongoose_1.MongooseModule.forFeature([{
                     name: contactList_schema_1.ContactList.name,
                     schema: contactList_schema_1.ContactListSchema
@@ -32,7 +35,7 @@ ContactListModule = __decorate([
             }),
         ],
         controllers: [contactList_controller_1.ContactListController],
-        providers: [contactList_service_1.ContactListService, jwt_strategy_1.JwtStrategy],
+        providers: [contactList_service_1.ContactListService, jwt_strategy_1.JwtStrategy, task_service_1.TaskService],
     })
 ], ContactListModule);
 exports.ContactListModule = ContactListModule;

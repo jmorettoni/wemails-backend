@@ -42,11 +42,11 @@ import {
           @Prop({
             required: false
           })
-          createDate: string;
+          createDate: number;
           @Prop({
             required: false
           })
-          lastUpdate: string; 
+          lastUpdate: number; 
   }
 
  
