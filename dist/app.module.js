@@ -12,6 +12,7 @@ const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const mongoose_1 = require("@nestjs/mongoose");
 const contactList_module_1 = require("./contactList/contactList.module");
+const campaigns_module_1 = require("./campaigns/campaigns.module");
 const user_module_1 = require("./users/user.module");
 const auth_module_1 = require("./auth/auth.module");
 const tasks_module_1 = require("./tasks/tasks.module");
@@ -22,6 +23,7 @@ AppModule = __decorate([
         imports: [
             mongoose_1.MongooseModule.forRoot('mongodb+srv://wemails01:TDEGPhF0vcqEzwri@wemailsprod.78pv7oa.mongodb.net/?retryWrites=true&w=majority'),
             contactList_module_1.ContactListModule,
+            campaigns_module_1.CampaignModule,
             user_module_1.UserModule,
             auth_module_1.AuthModule,
             tasks_module_1.TasksModule,
