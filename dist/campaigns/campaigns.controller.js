@@ -30,8 +30,14 @@ let CampaignController = class CampaignController {
     getListById(param) {
         return this.campaignService.getCampaignById(param._id);
     }
-    getListByUserId(param) {
-        return this.campaignService.getCampaignByUserId(param.listUserId);
+    getCampanhaByUserId(param) {
+        return this.campaignService.getCampaignByUserId(param.campanhaUserId);
+    }
+    removeList(param, campanhas) {
+        return this.campaignService.removeCampaignByUserId(param.userIdRemove, campanhas.campanhas);
+    }
+    updateList(param, list) {
+        return this.campaignService.updateCampaignByUserId(param.userIdEdit, list);
     }
 };
 __decorate([
@@ -60,12 +66,30 @@ __decorate([
 ], CampaignController.prototype, "getListById", null);
 __decorate([
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
-    (0, common_1.Get)('/listUserId/:listUserId'),
+    (0, common_1.Get)('/campanhaUserId/:campanhaUserId'),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], CampaignController.prototype, "getListByUserId", null);
+], CampaignController.prototype, "getCampanhaByUserId", null);
+__decorate([
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
+    (0, common_1.Post)('/userIdRemove/:userIdRemove'),
+    __param(0, (0, common_1.Param)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], CampaignController.prototype, "removeList", null);
+__decorate([
+    (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
+    (0, common_1.Post)('/userIdEdit/:userIdEdit'),
+    __param(0, (0, common_1.Param)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, Object]),
+    __metadata("design:returntype", void 0)
+], CampaignController.prototype, "updateList", null);
 CampaignController = __decorate([
     (0, common_1.Controller)('campaigns'),
     __metadata("design:paramtypes", [campaigns_service_1.CampaignService])

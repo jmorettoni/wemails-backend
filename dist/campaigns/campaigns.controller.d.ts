@@ -12,7 +12,13 @@ export declare class CampaignController {
     getListById(param: any): Promise<import("./campaigns.schema").Campaign & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }>;
-    getListByUserId(param: any): Promise<(import("./campaigns.schema").Campaign & import("mongoose").Document<any, any, any> & {
+    getCampanhaByUserId(param: any): Promise<(import("./campaigns.schema").Campaign & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     })[]>;
+    removeList(param: any, campanhas: any): Promise<{
+        return: import("mongodb").DeleteResult;
+    } | {
+        error: any;
+    }>;
+    updateList(param: any, list: any): Promise<import("mongodb").UpdateResult>;
 }

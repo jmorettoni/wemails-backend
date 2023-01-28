@@ -48,11 +48,24 @@ import {
 
         @UseGuards(AuthGuard('jwt'))
         //@Get('listUserId')
-        @Get('/listUserId/:listUserId')
-        getListByUserId(@Param() param) {
-          return this.campaignService.getCampaignByUserId(param.listUserId); 
+        @Get('/campanhaUserId/:campanhaUserId')
+        getCampanhaByUserId(@Param() param) {
+          return this.campaignService.getCampaignByUserId(param.campanhaUserId); 
         } 
 
+        
+        @UseGuards(AuthGuard('jwt')) 
+        @Post('/userIdRemove/:userIdRemove')
+        removeList( @Param() param , @Body() campanhas    ) {
+          return this.campaignService.removeCampaignByUserId( param.userIdRemove  ,  campanhas.campanhas ); 
+        } 
+
+       
+        @UseGuards(AuthGuard('jwt')) 
+        @Post('/userIdEdit/:userIdEdit')
+        updateList( @Param() param , @Body() list    ) {
+          return this.campaignService.updateCampaignByUserId( param.userIdEdit  ,  list  ); 
+        } 
         
        
 

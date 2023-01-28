@@ -4,7 +4,7 @@ export class Campaign {
     campanhaUserId: string;
     nameFrom : string;
     campanhaImage: string; 
-
+    campanhaCodigoHtml: string;
     totalEnviados : number ;  
     totalEntregues : number;
     totalBloqueados : number; 

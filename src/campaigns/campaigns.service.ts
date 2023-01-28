@@ -15,11 +15,13 @@ import {
     Campaign,
     CampaignDocument
   } from './campaigns.schema';
+
+  import { TaskService } from '../tasks/shared/task.service/task.service';
   
   @Injectable()
   export class CampaignService {
   
-       constructor(@InjectModel(Campaign.name) private campaignModel: Model < CampaignDocument > ) {}
+    constructor(@InjectModel(Campaign.name) private campaignModel: Model < CampaignDocument > ,  private taskService:TaskService   ) {}
   
  
        //////////////
@@ -39,9 +41,9 @@ import {
 
 
            ///////////-
-           async getCampaignByUserId( listUserId: string) {
+           async getCampaignByUserId( campanhaUserId: string) {
             return this.campaignModel.find({
-              listUserId
+              campanhaUserId
             }).sort( { _id: -1 } ).exec();
           }
           ///////////
@@ -49,9 +51,9 @@ import {
         
 
         ///////////
-        async getCampaignByUser(listUserId: string) {
+        async getCampaignByUser(campanhaUserId: string) {
               return this.campaignModel.findOne({
-                listUserId
+                campanhaUserId
                 }).exec();
         }
         ///////////
@@ -70,6 +72,61 @@ import {
                 return createCampaign.save();
         }
         ///////////
+
+
+        async updateCampaignByUserId(  userid:String , campanha  ){
+          
+          console.log('TESTANDO EDIT CAMPANHA'  );
+          let campanhaId = campanha._id;
+          console.log('list TO SAVE USERID' , userid );
+          delete campanha._id;
+     
+          const createDate = Date.now();
+          campanha.lastUpdate = createDate;
+
+          console.log('campanha TO SAVE' , campanha );
+          return await this.campaignModel.updateOne(  { _id:campanhaId, campanhaUserId : userid  }, campanha).exec();  
+        }
+      ///////////////
+
+      
+
+
+
+
+        async removeCampaignByUserId(userId, campanhaArray){ 
+
+              
+                console.log("removeListByUserId" , userId);
+                console.log("removeListByUserId" , campanhaArray);
+
+
+          
+
+                
+                  /////REMOVER/////// 
+                  return await this.campaignModel.deleteMany({ campanhaUserId : userId ,  _id: {$in:campanhaArray}   }).exec().then(res=>{
+
+                            /////ADICIONAR  TASK PARA REMOVER LISTA PARA REMOVER CADA EMAIL////////  
+                            let task : any = {
+                            "description": "DELETE-CAMPAIGNS",
+                            "object" : campanhaArray,
+                            "completed" : false
+                            }; 
+                         
+                          
+                            this.taskService.create(task).then(res=>{
+                              console.log("CREATE TASK")
+                            })
+                          
+                            
+                    return {return :res}
+                  }).catch(error=>{
+                    return {error :error }
+                  })
+                  
+
+        }
 
     
   }

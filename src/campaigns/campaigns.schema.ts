@@ -30,6 +30,10 @@ import {
           @Prop({
             required: false
           }) 
+          campanhaCodigoHtml: string;
+          @Prop({
+            required: false
+          })
           totalEnviados: number;
           @Prop({
             required: false
