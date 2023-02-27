@@ -8,6 +8,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ContactListModule } from './contactList/contactList.module';
 import { CampaignModule } from './campaigns/campaigns.module';
 import { FormModule } from './forms/forms.module';
+import { RotineModule } from './rotines/rotines.module';
 import { UserModule } from './users/user.module';
 import { AuthModule } from './auth/auth.module';
 import { TasksModule } from './tasks/tasks.module';
@@ -18,6 +19,7 @@ import { TasksModule } from './tasks/tasks.module';
     ContactListModule,
     CampaignModule,
     FormModule,
+    RotineModule,
     UserModule,
     AuthModule,
     TasksModule,

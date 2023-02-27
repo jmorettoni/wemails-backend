@@ -27,7 +27,7 @@ let CampaignController = class CampaignController {
     createList(createCampaignDto) {
         return this.campaignService.createCampaign(createCampaignDto);
     }
-    getListById(param) {
+    getCampaignById(param) {
         return this.campaignService.getCampaignById(param._id);
     }
     getCampanhaByUserId(param) {
@@ -58,12 +58,12 @@ __decorate([
 ], CampaignController.prototype, "createList", null);
 __decorate([
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
-    (0, common_1.Get)('_id'),
+    (0, common_1.Get)(':_id'),
     __param(0, (0, common_1.Param)()),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Object]),
     __metadata("design:returntype", void 0)
-], CampaignController.prototype, "getListById", null);
+], CampaignController.prototype, "getCampaignById", null);
 __decorate([
     (0, common_1.UseGuards)((0, passport_1.AuthGuard)('jwt')),
     (0, common_1.Get)('/campanhaUserId/:campanhaUserId'),

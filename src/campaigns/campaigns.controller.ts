@@ -40,8 +40,8 @@ import {
 
 
         @UseGuards(AuthGuard('jwt'))
-        @Get('_id')
-        getListById(@Param() param) {
+        @Get(':_id')
+        getCampaignById(@Param() param) {
           return this.campaignService.getCampaignById(param._id); 
         } 
 

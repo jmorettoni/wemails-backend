@@ -9,7 +9,7 @@ export declare class CampaignController {
     createList(createCampaignDto: CreateCampaignDto): Promise<import("./campaigns.schema").Campaign & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }>;
-    getListById(param: any): Promise<import("./campaigns.schema").Campaign & import("mongoose").Document<any, any, any> & {
+    getCampaignById(param: any): Promise<import("./campaigns.schema").Campaign & import("mongoose").Document<any, any, any> & {
         _id: import("mongoose").Types.ObjectId;
     }>;
     getCampanhaByUserId(param: any): Promise<(import("./campaigns.schema").Campaign & import("mongoose").Document<any, any, any> & {

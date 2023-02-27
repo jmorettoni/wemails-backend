@@ -14,6 +14,7 @@ const mongoose_1 = require("@nestjs/mongoose");
 const contactList_module_1 = require("./contactList/contactList.module");
 const campaigns_module_1 = require("./campaigns/campaigns.module");
 const forms_module_1 = require("./forms/forms.module");
+const rotines_module_1 = require("./rotines/rotines.module");
 const user_module_1 = require("./users/user.module");
 const auth_module_1 = require("./auth/auth.module");
 const tasks_module_1 = require("./tasks/tasks.module");
@@ -26,6 +27,7 @@ AppModule = __decorate([
             contactList_module_1.ContactListModule,
             campaigns_module_1.CampaignModule,
             forms_module_1.FormModule,
+            rotines_module_1.RotineModule,
             user_module_1.UserModule,
             auth_module_1.AuthModule,
             tasks_module_1.TasksModule,

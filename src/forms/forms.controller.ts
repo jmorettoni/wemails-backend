@@ -41,7 +41,7 @@ import {
 
         @UseGuards(AuthGuard('jwt'))
         @Get('_id')
-        getListById(@Param() param) {
+        getFormById(@Param() param) {
           return this.formService.getFormById(param._id); 
         } 
 
@@ -49,14 +49,14 @@ import {
         @UseGuards(AuthGuard('jwt'))
         //@Get('listUserId')
         @Get('/formUserId/:formUserId')
-        getCampanhaByUserId(@Param() param) {
+        getFormByUserId(@Param() param) {
           return this.formService.getFormByUserId(param.formUserId); 
         } 
 
        
         @UseGuards(AuthGuard('jwt')) 
         @Post('/userIdRemove/:userIdRemove')
-        removeList( @Param() param , @Body() forms    ) {
+        removeForm( @Param() param , @Body() forms    ) {
           return this.formService.removeFormByUserId( param.userIdRemove  ,  forms.forms ); 
         } 
          
@@ -64,7 +64,7 @@ import {
        
         @UseGuards(AuthGuard('jwt')) 
         @Post('/userIdEdit/:userIdEdit')
-        updateList( @Param() param , @Body() campanha    ) {
+        updateForm( @Param() param , @Body() campanha    ) {
           return this.formService.updateFormByUserId( param.userIdEdit  ,  campanha  ); 
         } 
         

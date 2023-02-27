@@ -77,15 +77,15 @@ import {
 
         async updateFormByUserId(  userid:String , form  ){
           
-          console.log('TESTANDO EDIT CAMPANHA'  );
+          console.log('TESTANDO EDIT FORM'  );
           let formId = form._id;
-          console.log('list TO SAVE USERID' , userid );
+          console.log('FORM TO SAVE USERID' , userid );
           delete form._id;
      
           const createDate = Date.now();
           form.lastUpdate = createDate;
 
-          console.log('campanha TO SAVE' , form );
+          console.log('form TO SAVE' , form );
           return await this.formModel.updateOne(  { _id:formId, formUserId : userid  },
              form).exec();  
         }
